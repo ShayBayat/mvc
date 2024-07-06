@@ -1,0 +1,25 @@
+@model MyMvcProject.ViewModels.PersonViewModel
+
+@{
+    ViewData["Title"] = "Details"; // Set the title of the page
+}
+
+<h2>Details</h2>
+
+<!-- Display details of a person -->
+<div>
+    <h4>Person</h4>
+    <div>
+        <label>Name:</label>
+        <p>@Model.Name</p>
+    </div>
+    <div>
+        <label>City:</label>
+        <p>@Model.City</p>
+    </div>
+</div>
+
+<!-- Link to go back to the list of people -->
+<a href="@Url.Action("Index", "People")">Back to List</a>
+<!-- Link to delete the person -->
+<a href="@Url.Action("Delete", "People", new { id = Model.Id })">Delete</a>

@@ -1,0 +1,40 @@
+@model IEnumerable<MyMvcProject.ViewModels.PersonViewModel>
+
+@{
+    ViewData["Title"] = "Index"; // Set the title of the page
+}
+
+<h2>Index</h2>
+
+<!-- Display the list of people in a table -->
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.Name</td>
+                <td>@person.City</td>
+                <td>
+                    <!-- Link to view details of a person -->
+                    <a href="@Url.Action("Details", "People", new { id = person.Id })">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Form to search people by name or city -->
+<form asp-action="Index" method="get">
+    <input type="text" name="searchString" placeholder="Search by name or city" />
+    <button type="submit">Search</button>
+</form>
+
+<!-- Link to create a new person -->
+<a href="@Url.Action("Create", "People")">Create New</a>
